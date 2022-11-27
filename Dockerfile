@@ -8,6 +8,8 @@ RUN adduser -D ci
 
 ADD *.sh /home/ci/
 
-RUN chmod 555 /home/ci/*.sh 
+RUN chmod 555 /home/ci/*.sh
+
+RUN mkdir work
 
 ENTRYPOINT ["/home/ci/entrypoint.sh"]
