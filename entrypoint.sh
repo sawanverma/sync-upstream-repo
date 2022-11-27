@@ -27,7 +27,7 @@ if ! echo "$UPSTREAM_REPO" | grep '\.git'; then
 fi
 
 echo "UPSTREAM_REPO=$UPSTREAM_REPO"
-
+mkdir work
 git clone "https://github.com/${GITHUB_REPOSITORY}.git" work
 cd work || { echo "Missing work dir" && exit 2 ; }
 
