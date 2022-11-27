@@ -26,14 +26,14 @@ if ! echo "$UPSTREAM_REPO" | grep '\.git'; then
   UPSTREAM_REPO="https://github.com/${UPSTREAM_REPO_PATH}.git"
 fi
 
-echo "UPSTREAM_REPO=$UPSTREAM_REPO"
-mkdir work
-git clone "https://github.com/${GITHUB_REPOSITORY}.git" work
-cd work || { echo "Missing work dir" && exit 2 ; }
-
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git config --local user.password ${GITHUB_TOKEN}
+
+echo "UPSTREAM_REPO=$UPSTREAM_REPO"
+git clone "https://github.com/${GITHUB_REPOSITORY}.git" work 
+cd work || { echo "Missing work dir" && exit 2 ; }
+
 
 git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
